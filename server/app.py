@@ -37,16 +37,12 @@ def bakery_by_id(id):
 
     return response
 
-
 # Get a list of baked goods and sorted by price in descending order
 @app.route('/baked_goods/by_price')
 def baked_goods_by_price():
     baked_goods = BakedGood.query.order_by(BakedGood.price.desc()).all()
     baked_goods_serialized = [baked.to_dict() for baked in baked_goods]
     return make_response(baked_goods_serialized, 200)
-
-
-
 
 # Get a single most expensive baked good, sort the baked goods in descending order and limit the number of results
 @app.route('/baked_goods/most_expensive')
